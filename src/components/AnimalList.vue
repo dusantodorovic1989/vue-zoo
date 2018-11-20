@@ -36,8 +36,8 @@
                 <td>{{animal.spicies}}</td>
                 <td>{{animal.name}}</td>
                 
-                <td v-if= "animal.dateOfBirth !== ''">{{animal.dateOfBirth}}</td>
-                <td v-if= "animal.dateOfBirth === ''">Nepoznat</td>
+                <td v-if= "animal.dateOfBirth">{{animal.dateOfBirth}}</td>
+                <td v-if= "!animal.dateOfBirth">Nepoznat</td>
 
                 <td>{{animal.sector.name}}</td>
 
