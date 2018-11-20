@@ -22,6 +22,10 @@
                     <button @click="removeAnimal(animal)">Remove</button>
                 </td>
 
+                <td>
+                    <button @click="moveToTop(animal)">Move to top</button>
+                </td>
+
             </tr>
         </tbody>
 </table>
@@ -38,7 +42,15 @@ export default {
                 let index = this.animalList.indexOf(animal);
                 this.animalList.splice(index,1);
                 
+            },
+            moveToTop(animal){
+                let index1= this.animalList.indexOf(animal);
+                
+                
+                this.animalList.splice(index1,1);
+                this.animalList.unshift(animal);
             }
+
         },
 
     data(){
