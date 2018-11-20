@@ -9,7 +9,15 @@
          <label>Date of birth</label>
          <input v-model="newAnimal.dateOfBirth" placeholder="Date of birth"/><br>
 
-         <button type='sibmit'>ADD CONTACT</button>
+         <select v-model="newAnimal.sector">
+            <option disabled value="">Please select one</option>
+            <option v-for='(sector,index) in sectors' :key="index" :value ="sector">{{sector.name}}</option>
+           
+            </select>
+        
+         
+
+         <button type='sibmit'>ADD ANIMAL</button>
         
     </form>
         <h3>Animal list</h3>
@@ -20,6 +28,7 @@
             <th>Spicies</th>
             <th>Name</th>
             <th>Date of birth</th>
+            <th>Sector</th>
         </thead>
         <tbody>
             <tr v-for="(animal,index) in animalList" :key="index">
@@ -29,6 +38,8 @@
                 
                 <td v-if= "animal.dateOfBirth !== ''">{{animal.dateOfBirth}}</td>
                 <td v-if= "animal.dateOfBirth === ''">Nepoznat</td>
+
+                <td>{{animal.sector.name}}</td>
 
                  <td>
                     <button @click="removeAnimal(animal)">Remove</button>
@@ -47,6 +58,11 @@
 </template>
 
 <script>
+const sectors = [
+    {name:'Water-animal',surface: 'Water'},
+    {name:'Air-animal',surface: 'Air'},
+    {name:'Dinusaurusi',surface: 'All-ground'},
+];
 export default {
      methods:{
 
@@ -71,18 +87,17 @@ export default {
 
     data(){
         return {
+            sectors:sectors,
             newAnimal:{
-                spicies:'',
-                name:'',
-                dateOfBirth:''
+                
             },
             animalList: [
-                {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.10.2016'},
-                {spicies: 'glodar',name: 'Miki', dateOfBirth:'11.10.2014'},
-                {spicies: 'vodozemac',name: 'Shiki', dateOfBirth:'11.5.2012'},
-                {spicies: 'dinosaurus',name: 'Rez', dateOfBirth:'11.9.2011'},
-                {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.5.2011'},
-                {spicies: 'sisar',name: 'Aca', dateOfBirth:''}
+                {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.10.2016',sector:sectors[0]},
+                {spicies: 'glodar',name: 'Miki', dateOfBirth:'11.10.2014',sector:sectors[0]},
+                {spicies: 'vodozemac',name: 'Shiki', dateOfBirth:'11.5.2012',sector:sectors[2]},
+                {spicies: 'dinosaurus',name: 'Rez', dateOfBirth:'11.9.2011',sector:sectors[2]},
+                {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.5.2011',sector:sectors[1]},
+                {spicies: 'sisar',name: 'Aca', dateOfBirth:'',sector:sectors[0]}
             ],
             
         }
