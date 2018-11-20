@@ -18,6 +18,10 @@
                 <td v-if= "animal.dateOfBirth !== ''">{{animal.dateOfBirth}}</td>
                 <td v-if= "animal.dateOfBirth === ''">Nepoznat</td>
 
+                 <td>
+                    <button @click="removeAnimal(animal)">Remove</button>
+                </td>
+
             </tr>
         </tbody>
 </table>
@@ -28,6 +32,15 @@
 
 <script>
 export default {
+     methods:{
+            
+            removeAnimal(animal){
+                let index = this.animalList.indexOf(animal);
+                this.animalList.splice(index,1);
+                
+            }
+        },
+
     data(){
         return {
             animalList: [
