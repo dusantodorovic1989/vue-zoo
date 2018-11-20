@@ -1,5 +1,17 @@
 <template>
     <div>
+          <h3>Add animal</h3>
+     <form @submit.prevent='addAnimal'>
+         <label>Spicies</label>
+         <input v-model="newAnimal.spicies" placeholder="Spicies"/><br>
+         <label>Name</label>
+         <input v-model="newAnimal.name" placeholder="Name"/><br>
+         <label>Date of birth</label>
+         <input v-model="newAnimal.dateOfBirth" placeholder="Date of birth"/><br>
+
+         <button type='sibmit'>ADD CONTACT</button>
+        
+    </form>
         <h3>Animal list</h3>
 
           <table border =1>
@@ -37,7 +49,11 @@
 <script>
 export default {
      methods:{
-            
+
+            addAnimal(){
+                this.animalList.push(this.newAnimal);
+                this.newContact = {};
+            },
             removeAnimal(animal){
                 let index = this.animalList.indexOf(animal);
                 this.animalList.splice(index,1);
@@ -55,6 +71,11 @@ export default {
 
     data(){
         return {
+            newAnimal:{
+                spicies:'',
+                name:'',
+                dateOfBirth:''
+            },
             animalList: [
                 {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.10.2016'},
                 {spicies: 'glodar',name: 'Miki', dateOfBirth:'11.10.2014'},
