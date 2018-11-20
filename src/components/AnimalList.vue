@@ -51,6 +51,27 @@
 
             </tr>
         </tbody>
+
+
+    <table border =1>
+        <thead>
+            <th>Index</th>
+            <th>Name</th>
+            <th>Surface</th>
+            
+        </thead>
+        <tbody>
+            <tr v-for="(sector,key) in sectors" :key="key">
+                <td>{{key + 1}}</td>
+                <td>{{sector.name}}</td>
+                <td>{{sector.surface}}</td>
+                <td>
+                    <button @click="showAnimals(sector)">Show animals</button>
+                </td>
+
+            </tr>
+        </tbody>
+</table>
 </table>
 
     </div>
@@ -81,6 +102,23 @@ export default {
                 
                 this.animalList.splice(index1,1);
                 this.animalList.unshift(animal);
+            },
+
+            showAnimals(sector){
+                    let animals = [];
+                this.animalList.forEach((currentAnimal)=>{
+                    if(currentAnimal.sector === sector){
+                        
+
+                        animals.push(currentAnimal.name)
+
+                        
+
+                        
+                    }
+                    
+                })
+                alert(animals);
             }
 
         },
@@ -97,7 +135,7 @@ export default {
                 {spicies: 'vodozemac',name: 'Shiki', dateOfBirth:'11.5.2012',sector:sectors[2]},
                 {spicies: 'dinosaurus',name: 'Rez', dateOfBirth:'11.9.2011',sector:sectors[2]},
                 {spicies: 'sisar',name: 'Brka', dateOfBirth:'11.5.2011',sector:sectors[1]},
-                {spicies: 'sisar',name: 'Aca', dateOfBirth:'',sector:sectors[0]}
+                {spicies: 'sisar',name: 'Aca', dateOfBirth:'',sector:sectors[1]}
             ],
             
         }
