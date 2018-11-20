@@ -89,7 +89,7 @@ export default {
 
             addAnimal(){
                 this.animalList.push(this.newAnimal);
-                this.newContact = {};
+                this.newAnimal = {};
             },
             removeAnimal(animal){
                 let index = this.animalList.indexOf(animal);
@@ -105,7 +105,7 @@ export default {
             },
 
             showAnimals(sector){
-                    let animals = [];
+                let animals = [];
                 this.animalList.forEach((currentAnimal)=>{
                     if(currentAnimal.sector === sector){
                         
